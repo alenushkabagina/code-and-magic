@@ -1,13 +1,13 @@
 // const Иван = 'строка имени';
-const names = ['Иван', 'Хуан', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 const coatColor = [rgb(101, 137, 164), rgb(241, 43, 107), rgb(146, 100, 161), rgb(56, 159, 117), rgb(215, 210, 55), rgb(0, 0, 0)],
 const eyesColor = [black, red, blue, yellow, green],
 
 const generateWizard = () => {
   return {
     name: names[getRandomInt(0, names.length)],
-    coatColor: '',
-    eyesColor: ''
+    coatColor: coatColor[getRandomInt(0, coatColor.length)],
+    eyesColor: eyesColor[getRandomInt(0, eyesColor.length)],
   };
 }
 
