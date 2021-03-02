@@ -28,7 +28,7 @@ const renderText = function(ctx ) {
 }
 
 const getRandomInt = (max) => {
-  return Math.ceil(Math.random() * max);
+  return Math.floor(Math.random() * max);
 }
 
 const getMaxItem = (arr) => {
