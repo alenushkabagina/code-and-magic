@@ -6,14 +6,15 @@ const coatColores = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 1
 const eyesColores = ['black', 'red', 'blue', 'yellow', 'green'];
 
 const generateWizard = () => {
+  const name = names[getRandomInt(names.length)];
+  const surname = surnames[getRandomInt(surnames.length)];
+  const coatColor = coatColores[getRandomInt(coatColores.length)];
+  const eyesColor = eyesColores[getRandomInt(eyesColores.length)];
 
-    surname: surnames[getRandomInt(0, surnames.length)],
-    // coatColor: coatColores[getRandomInt(0, coatColores.length)],
-    // eyesColor: eyesColores[getRandomInt(0, eyesColores.length)],
   return {
-
-    name: names[getRandomInt(0, names.length)],
-
+    name: name + ' ' + surname,
+    coatColor: coatColor,
+    eyesColor: eyesColor,
   };
 }
 
@@ -25,4 +26,4 @@ const generateWizards = (number) => {
   return arr;
 }
 
-// console.log(generateWizards(4))
+console.log(generateWizards(4))
