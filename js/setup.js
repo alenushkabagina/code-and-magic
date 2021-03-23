@@ -27,3 +27,37 @@ const generateWizards = (number) => {
 }
 
 console.log(generateWizards(4))
+
+const wizards = generateWizards(4);
+
+const wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+// wizardTemplate.querySelector('.setup-similar-label').textContent
+// console.log(wizardTemplate.content.querySelector('.setup-similar-item'));
+const data = wizards[0];
+console.log(data);
+
+const setupElement = document.querySelector('.setup');
+const setupSimilarElement = setupElement.querySelector('.setup-similar');
+const setupListElement = setupSimilarElement.querySelector('.setup-similar-list');
+
+setupSimilarElement.classList.remove('hidden');
+setupElement.classList.remove('hidden');
+
+
+
+const createWizardElement = function(data) {
+  const element = wizardTemplate.cloneNode(true);
+  element.querySelector('.setup-similar-label').textContent = data.name;
+  element.querySelector('.wizard-coat').style.fill = data.coatColor;
+  element.querySelector('.wizard-eyes').style.fill = data.eyesColor;
+
+  return element;
+}
+
+const displayWizards = (arr) => {
+  for (let i = 0; i < arr.length; i += 1) {
+    setupListElement.appendChild(createWizardElement(arr[i]));
+  }
+}
+
+displayWizards(wizards);
