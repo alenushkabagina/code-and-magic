@@ -1,9 +1,8 @@
-// const Иван = 'строка имени';
-
 const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 const coatColores = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 const eyesColores = ['black', 'red', 'blue', 'yellow', 'green'];
+const fireballColores = ['ee4830', '30a8ee', '5ce6c0', 'e848d5', 'e6e848'];
 
 const generateWizard = () => {
   const name = names[getRandomInt(names.length)];
@@ -39,7 +38,7 @@ const setupSimilarElement = setupElement.querySelector('.setup-similar');
 const setupListElement = setupSimilarElement.querySelector('.setup-similar-list');
 
 setupSimilarElement.classList.remove('hidden');
-setupElement.classList.remove('hidden');
+
 
 
 
@@ -60,20 +59,36 @@ const displayWizards = (arr) => {
 
 displayWizards(wizards);
 
-const setupOpen = document.querySelector('.setup-open');
-const setupClose = document.querySelector('.setup-close');
 
-setupElement.addEventListener('click', function () {
-  setupOpen.classList.remove('hidden');
+
+
+
+const setupOpenElement = document.querySelector('.setup-open');
+setupOpenElement.addEventListener('click', function() {
+  setupElement.classList.remove('hidden');
 });
 
-setupElement.addEventListener('click', function () {
-  setupOpen.classList.add('hidden');
+const setupCloseElement = setupElement.querySelector('.setup-close');
+setupCloseElement.addEventListener('click', function() {
+  setupElement.classList.add('hidden');
+});
+
+
+
+document.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === 13) {
+    setupListElement.classList.remove('hidden');
+  }
 });
 
 document.addEventListener('keydown', function(evt) {
-
-  if (evt.keyCode === 13) {
-
+  if (evt.keyCode === 27) {
+    setupListElement.classList.add('hidden');
   }
+});
+
+const wizardCoat = document.querySelector('.wizard-coat');
+
+wizardCoat.addEventListener('click', function () {
+  // const coatColor = coatColores[getRandomInt(coatColores.length)];
 });
