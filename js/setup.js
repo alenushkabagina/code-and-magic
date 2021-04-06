@@ -31,8 +31,6 @@ console.log(generateWizards(4))
 const wizards = generateWizards(4);
 
 const wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-// wizardTemplate.querySelector('.setup-similar-label').textContent
-// console.log(wizardTemplate.content.querySelector('.setup-similar-item'));
 const data = wizards[0];
 console.log(data);
 
@@ -61,3 +59,21 @@ const displayWizards = (arr) => {
 }
 
 displayWizards(wizards);
+
+const setupOpen = document.querySelector('.setup-open');
+const setupClose = document.querySelector('.setup-close');
+
+setupElement.addEventListener('click', function () {
+  setupOpen.classList.remove('hidden');
+});
+
+setupElement.addEventListener('click', function () {
+  setupOpen.classList.add('hidden');
+});
+
+document.addEventListener('keydown', function(evt) {
+
+  if (evt.keyCode === 13) {
+
+  }
+});
