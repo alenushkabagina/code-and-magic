@@ -2,7 +2,7 @@ const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вал
 const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 const coatColores = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 const eyesColores = ['black', 'red', 'blue', 'yellow', 'green'];
-const fireballColores = ['ee4830', '30a8ee', '5ce6c0', 'e848d5', 'e6e848'];
+const fireballColores = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 const generateWizard = () => {
   const name = names[getRandomInt(names.length)];
@@ -79,6 +79,7 @@ document.addEventListener('keydown', function(evt) {
   if (evt.keyCode === 13) {
     setupListElement.classList.remove('hidden');
   }
+
 });
 
 document.addEventListener('keydown', function(evt) {
@@ -87,8 +88,20 @@ document.addEventListener('keydown', function(evt) {
   }
 });
 
-const wizardCoat = document.querySelector('.wizard-coat');
+const wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
 
 wizardCoat.addEventListener('click', function () {
-  // const coatColor = coatColores[getRandomInt(coatColores.length)];
+  wizardCoat.style.fill =  coatColores[getRandomInt(coatColores.length)];
+});
+
+const wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill =  eyesColores[getRandomInt(eyesColores.length)];
+});
+
+const wizardFireball = document.querySelector('.setup-fireball-wrap');
+
+wizardFireball.addEventListener('click', function () {
+  wizardFireball.style.backgroundColor =  fireballColores[getRandomInt(fireballColores.length)];
 });
