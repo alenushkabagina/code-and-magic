@@ -1,3 +1,5 @@
+import {getRandomInt, getMaxItem} from './util.js';
+
 const CLOUD_X = 100;
 const CLOUD_Y = 10;
 const CLOUD_width = 420;
@@ -25,21 +27,6 @@ const renderText = function(ctx ) {
     ctx.fillStyle = "black";
     ctx.fillText("Ура вы победили!", textX, textY);
     ctx.fillText("Список результатов:", textX, textY + 20);
-}
-
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max);
-}
-
-const getMaxItem = (arr) => {
-  let max = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (max < arr[i]) {
-      max = arr[i];
-    }
-  }
-
-  return max;
 }
 
 window.renderStatistics = function (ctx, names, times) {
