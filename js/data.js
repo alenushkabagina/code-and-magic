@@ -1,3 +1,4 @@
+import {getRandomInt} from './util.js'
 const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 const coatColores = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
@@ -38,20 +39,9 @@ export const generateWizards = (number) => {
   return arr;
 }
 
-export const createWizardElement = function(data) {
-  const element = wizardTemplate.cloneNode(true);
-  element.querySelector('.setup-similar-label').textContent = data.name;
-  element.querySelector('.wizard-coat').style.fill = data.coatColor;
-  element.querySelector('.wizard-eyes').style.fill = data.eyesColor;
 
-  return element;
-}
 
-export const displayWizards = (arr) => {
-  for (let i = 0; i < arr.length; i += 1) {
-    setupListElement.appendChild(createWizardElement(arr[i]));
-  }
-}
+
 
 export const renderCloud = function(ctx) {
   ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
