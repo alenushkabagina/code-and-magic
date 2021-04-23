@@ -1,13 +1,13 @@
 import {getRandomInt} from './util.js';
 import {generateWizards} from './data.js';
 
-console.log(generateWizards(4))
+// console.log(generateWizards(4))
 
 const wizards = generateWizards(4);
 
 const wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 const data = wizards[0];
-console.log(data);
+// console.log(data);
 
 const setupElement = document.querySelector('.setup');
 const setupSimilarElement = setupElement.querySelector('.setup-similar');
