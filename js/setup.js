@@ -1,5 +1,6 @@
 import {getRandomInt} from './util.js';
-import {generateWizards} from './data.js';
+import {generateWizards, coatColores, eyesColores, fireballColores} from './data.js';
+import {getData} from './server.js'
 
 // console.log(generateWizards(4))
 
@@ -8,6 +9,16 @@ const wizards = generateWizards(4);
 const wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 const data = wizards[0];
 // console.log(data);
+
+const onServerSuccess = function(arr) {
+  console.log(arr);
+}
+
+const onServerError = function(error) {
+
+}
+
+getData(onServerSuccess, onServerError);
 
 const setupElement = document.querySelector('.setup');
 const setupSimilarElement = setupElement.querySelector('.setup-similar');
@@ -97,9 +108,13 @@ document.addEventListener('keydown', function(evt) {
   }
 });
 
-const wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
+
+
+const wizardCoat = document.querySelector('.wizard-coat');
+// const wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
 
 wizardCoat.addEventListener('click', function () {
+  // const coatColor = coatColores[getRandomInt(coatColores.length)];
   wizardCoat.style.fill =  coatColores[getRandomInt(coatColores.length)];
 });
 
@@ -110,6 +125,27 @@ wizardEyes.addEventListener('click', function () {
 });
 
 const wizardFireball = document.querySelector('.setup-fireball-wrap');
+
+wizardFireball.addEventListener('click', function () {
+  wizardFireball.style.backgroundColor =  fireballColores[getRandomInt(fireballColores.length)];
+});
+
+
+
+// const wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill =  coatColores[getRandomInt(coatColores.length)];
+});
+
+// const wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill =  eyesColores[getRandomInt(eyesColores.length)];
+
+});
+
+// const wizardFireball = document.querySelector('.setup-fireball-wrap');
 
 wizardFireball.addEventListener('click', function () {
   wizardFireball.style.backgroundColor =  fireballColores[getRandomInt(fireballColores.length)];

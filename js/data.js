@@ -1,9 +1,9 @@
 import {getRandomInt} from './util.js'
 const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-const coatColores = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-const eyesColores = ['black', 'red', 'blue', 'yellow', 'green'];
-const fireballColores = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+export const coatColores = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+export const eyesColores = ['black', 'red', 'blue', 'yellow', 'green'];
+export const fireballColores = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 const CLOUD_X = 100;
 const CLOUD_Y = 10;
