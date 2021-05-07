@@ -7,18 +7,12 @@ import {getData} from './server.js'
 const wizards = generateWizards(4);
 
 const wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-const data = wizards[0];
+// const data = wizards[0];
 // console.log(data);
 
-const onServerSuccess = function(arr) {
-  console.log(arr);
-}
 
-const onServerError = function(error) {
 
-}
-
-getData(onServerSuccess, onServerError);
+// getData(onServerSuccess, onServerError);
 
 const setupElement = document.querySelector('.setup');
 const setupSimilarElement = setupElement.querySelector('.setup-similar');
@@ -65,27 +59,61 @@ setupSimilarElement.classList.remove('hidden');
 const createWizardElement = function(data) {
   const element = wizardTemplate.cloneNode(true);
   element.querySelector('.setup-similar-label').textContent = data.name;
-  element.querySelector('.wizard-coat').style.fill = data.coatColor;
-  element.querySelector('.wizard-eyes').style.fill = data.eyesColor;
+  element.querySelector('.wizard-coat').style.fill = data.colorCoat;
+  element.querySelector('.wizard-eyes').style.fill = data.colorEyes;
 
   return element;
 }
 
 const displayWizards = (arr) => {
+  setupListElement.innerHTML = '';
   for (let i = 0; i < arr.length; i += 1) {
     setupListElement.appendChild(createWizardElement(arr[i]));
   }
 }
 
+let data = [];
+let colorEyes = '';
+let colorCoat = '';
+const calcWeight = (obj) => {
+  let weight = 0;
+  if (obj.colorCoat === colorCoat) {
+    weight += 1;
+  }
+  if (obj.colorEyes === colorEyes) {
+    weight += 1;
+  }
+  return weight;
+}
 
-displayWizards(wizards);
+const updateWizards = () => {
+  console.log(colorEyes);
+  const sorted = data.slice(0).sort(function(a, b) {
+    const weightA = calcWeight(a);
+    const weightB = calcWeight(b);
+
+    return weightB - weightA;
+  });
+  console.log(sorted);
+
+  displayWizards(sorted.slice(0, 4));
+}
 
 
+const onServerSuccess = function(arr) {
+  data = arr;
+  console.log(arr);
+  updateWizards();
+}
 
+const onServerError = function(error) {
+
+}
 
 const setupOpenElement = document.querySelector('.setup-open');
 setupOpenElement.addEventListener('click', function() {
   setupElement.classList.remove('hidden');
+  getData(onServerSuccess, onServerError);
 });
 
 const setupCloseElement = setupElement.querySelector('.setup-close');
@@ -121,7 +149,10 @@ wizardCoat.addEventListener('click', function () {
 const wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
 
 wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill =  eyesColores[getRandomInt(eyesColores.length)];
+  const color = eyesColores[getRandomInt(eyesColores.length)];
+  colorEyes = color;
+  wizardEyes.style.fill =  color;
+  updateWizards();
 });
 
 const wizardFireball = document.querySelector('.setup-fireball-wrap');
@@ -135,15 +166,13 @@ wizardFireball.addEventListener('click', function () {
 // const wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
 
 wizardCoat.addEventListener('click', function () {
-  wizardCoat.style.fill =  coatColores[getRandomInt(coatColores.length)];
+  colorCoat = coatColores[getRandomInt(coatColores.length)];
+  console.log(colorCoat);
+  wizardCoat.style.fill = colorCoat;
+  updateWizards();
 });
 
 // const wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
-
-wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill =  eyesColores[getRandomInt(eyesColores.length)];
-
-});
 
 // const wizardFireball = document.querySelector('.setup-fireball-wrap');
 
