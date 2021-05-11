@@ -179,3 +179,4 @@ wizardCoat.addEventListener('click', function () {
 wizardFireball.addEventListener('click', function () {
   wizardFireball.style.backgroundColor =  fireballColores[getRandomInt(fireballColores.length)];
 });
+
