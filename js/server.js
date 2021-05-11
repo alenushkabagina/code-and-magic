@@ -14,3 +14,10 @@ export const getData = (onSuccess, onError) => {
     onError(error);
   })
 }
+
+export const load = (data, onSuccess, onError) => {
+  fetch('https://22.javascript.pages.academy/code-and-magick', {
+    method: 'POST',
+    body: data
+  }).then(onSuccess).catch(onError)
+}

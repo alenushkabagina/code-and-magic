@@ -1,6 +1,6 @@
 import {getRandomInt} from './util.js';
 import {generateWizards, coatColores, eyesColores, fireballColores} from './data.js';
-import {getData} from './server.js'
+import {getData, load} from './server.js'
 
 // console.log(generateWizards(4))
 
@@ -15,8 +15,22 @@ const wizardTemplate = document.querySelector('#similar-wizard-template').conten
 // getData(onServerSuccess, onServerError);
 
 const setupElement = document.querySelector('.setup');
+const formElement = setupElement.querySelector('.setup-wizard-form');
 const setupSimilarElement = setupElement.querySelector('.setup-similar');
 const setupListElement = setupSimilarElement.querySelector('.setup-similar-list');
+
+
+const onLoadSuccess = (res) => {
+  console.log('onLoadSuccess', res);
+}
+const onLoadError = (error) => {
+  console.log('onLoadError', error);
+}
+formElement.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  const data = new FormData(formElement);
+  load(data, onLoadSuccess, onLoadError);
+})
 
 const titleElement = setupElement.querySelector('.setup-title');
 titleElement.addEventListener('mousedown', function(evt) {
